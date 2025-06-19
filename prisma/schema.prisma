@@ -80,4 +80,43 @@ model Category {
   image     String?  // Optional URL to category image
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  QA QA[]
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+model QA {
+  id             Int      @id @default(autoincrement())
+  question       String
+  optionA        String
+  optionB        String
+  optionC        String
+  optionD        String
+  correctAnswer  String   
+  level          Difficulty      
+  categoryId     Int
+  category       Category @relation(fields: [categoryId], references: [id])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  isActive       Boolean  @default(true)
+}
+
+model Avatar {
+    id             Int      @id @default(autoincrement())
+    url            String
+
+    Player Player[]
+}
+
+model Player {
+     id             Int      @id @default(autoincrement())
+     avatar         Avatar?     @relation(fields: [avatarId], references: [id])
+     avatarId       Int?
+     name           String
+     points          Int         @default(0)
 }

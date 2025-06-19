@@ -140,12 +140,8 @@ const data: {
               url: "/dashboard/users/all",
             },
             {
-              title: "Scholars",
-              url: "/dashboard/users/scholars",
-            },
-            {
-              title: "Moderators",
-              url: "/dashboard/users/moderators",
+              title: "Avatars",
+              url: "/users/avatars",
             },
           ],
         },
